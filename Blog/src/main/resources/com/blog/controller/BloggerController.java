@@ -35,6 +35,7 @@
 /* 35:44 */       request.setAttribute("blogger", blogger);
 /* 36:45 */       request.setAttribute("errorInfo", "用户名或密码错误！");
 /* 37:   */     }
+
 /* 38:46 */     return "login";
 /* 39:   */   }
 /* 40:   */   
