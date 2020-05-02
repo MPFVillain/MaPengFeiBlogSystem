@@ -36,4 +36,42 @@
 /* 36:   */   {
 /* 37:37 */     return (this.page - 1) * this.pageSize;
 /* 38:   */   }
+
+public class Hero {
+	
+	public void attack(Hero hero) {
+		
+	}
+	public void heal() {
+		
+	}
+	
+	public static void main(String[] args) {
+		Hero h = new Hero();
+		Hero h2 = new Hero();
+		h.attack(h2);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 39:   */ }
