@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Java个人博客系统后台登录页面</title>
+<title>个人博客系统后台登录页面</title>
 <script src="${pageContext.request.contextPath}/static/bootstrap3/js/jquery-1.11.2.min.js"></script>
 <STYLE>
 body{
@@ -143,28 +143,16 @@ $(function(){
 		$("#right_hand").attr("style","right:-112px;top:-12px");
 	});
 });
-/**
-*验证密码不能为空
-*/
-function checkForm(){
-	var userName=$("#userName").val();
-	var password=$("#password").val();
-	if(userName==null||userName==""){
-		$("#error").html("用户名不能为空！");
-		return false;
-	}
-	if(password==null||password==""){
-		$("#error").html("密码不能为空！");
-		return false;
-	}
-	return true;
+
+function toMain(){
+	this.location.href="${pageContext.request.contextPath}/admin/main.jsp";
 }
 </SCRIPT>
 </head>
 <body>
 <DIV class="top_div">
 </DIV>
-<form action="${pageContext.request.contextPath}/blogger/login.do" method="post" onsubmit="return checkForm()">
+<form >
 	<DIV style="background: rgb(255, 255, 255); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 200px; text-align: center;">
 		<DIV style="width: 165px; height: 96px; position: absolute;">
 			<DIV class="tou">
@@ -176,18 +164,18 @@ function checkForm(){
 		</DIV>
 		<P style="padding: 30px 0px 10px; position: relative;">
 			<SPAN class="u_logo"></SPAN>
-			<INPUT id="userName" name="userName" class="ipt" type="text" placeholder="请输入用户名" value="${blogger.userName }"> 
+			<INPUT id="userName" name="userName" class="ipt" type="text" placeholder="请输入用户名"> 
 	    </P>
 		<P style="position: relative;">
 			<SPAN class="p_logo"></SPAN>         
-			<INPUT id="password" name="password" class="ipt"  type="password" placeholder="请输入密码" value="${blogger.password }">   
+			<INPUT id="password" name="password" class="ipt"  type="password" placeholder="请输入密码">   
 	  	</P>
 		<DIV style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
 			<P style="margin: 0px 35px 20px 45px;">
-			<SPAN style="float: left;"><a href="${pageContext.request.contextPath}/index.html">Java个人博客系统</a></SPAN> 
-			<span><font color="red" id="error">${errorInfo }</font></span>
+			<SPAN style="float: left;"><a href="${pageContext.request.contextPath}/index.jsp">个人博客系统</a></SPAN> 
+			
 	        <SPAN style="float: right;"> 
-	              <input type="submit" style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;" value="登录"/> 
+	              <input type="button" onclick="toMain()" style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;" value="登录"/> 
 	         </SPAN>         
 	         </P>
 	    </DIV>
