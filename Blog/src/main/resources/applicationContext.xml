@@ -44,7 +44,7 @@
 	<!-- 自定义Realm -->
 	<bean id="myRealm" class="com.blog.realm.MyRealm"/>
 	
-	<!-- 安全管理器 -->
+	<!-- 安全管理器 myrealm登陆权限的验证-->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myRealm"/>
 	</bean>
