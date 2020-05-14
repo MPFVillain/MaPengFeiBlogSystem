@@ -11,16 +11,17 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"
->
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd"		
+>		
 
-	<!-- 配置数据源 -->
+			<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
 		<property name="url" value="jdbc:mysql://localhost:3306/db_blog?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="blog"/>
 		<property name="password" value="blog"/>
+	
 	</bean>
-
+	
 	<!-- 配置MyBatis的sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -30,18 +31,18 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 	
-	<!-- DAO接口所在包名，Spring会自动扫描这个包下面的类 -->
+		<!-- DAO接口所在包名，Spring会自动扫描这个包下面的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.blog.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
 	
-	<!-- 事务管理 -->
+		<!-- 事务管理 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<!-- 自定义Realm -->
+		<!-- 自定义Realm -->
 	<bean id="myRealm" class="com.blog.realm.MyRealm"/>
 	
 	<!-- 安全管理器 -->
@@ -63,6 +64,7 @@
 		</property>
 	</bean>
 	
+	
 	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 	
@@ -72,6 +74,7 @@
 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager"/>
 	</bean>
+	
 	
 	<!-- 配置事务通知属性 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -104,3 +107,4 @@
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="com.blog.service"/>	
 </beans>
+	
